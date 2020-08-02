@@ -21,4 +21,13 @@ def ways_up(n: int, step_sizes: List[int] = [1, 2]) -> int:
     >>> ways_up(5, step_sizes=[1, 3, 5])
     5
     """
-    pass
+    steps = 0
+    for step in step_sizes:
+        if step > n:
+            continue
+        elif step == n:
+            steps += 1
+        else:
+            steps += ways_up(n-step, step_sizes)
+
+    return steps
